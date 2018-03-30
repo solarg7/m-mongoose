@@ -90,7 +90,8 @@ router.get("/all", function(req, res) {
       }
       // If there are no errors, send the data to the browser as json
       else {
-        res.json(found);
+        //res.json(found);
+        res.render("index", found);
       }
     });
 });

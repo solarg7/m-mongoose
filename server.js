@@ -48,6 +48,13 @@ var scrapes = require("./scripts/scrape.js");
 app.use(scrapes);
 
 
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
 // Routes
 
 // A GET route for scraping the echoJS website
