@@ -1,4 +1,4 @@
-const scrapeFunction = function(req, res) {
+var scrapeFunction = function(req, res) {
   // Make a request for the news section of `ycombinator`
   request("https://www.nytimes.com/", function(error, response, html) {
     // Load the html body from request into cheerio
@@ -10,7 +10,7 @@ const scrapeFunction = function(req, res) {
       var title = $(element).children().children("a").text();
       var link = $(element).children().children("a").attr("href");
       var summary = $(element).children("p.summary").text();
-      var storage = false;
+      //var storage = false;
 
       
       var checkOut = 0;
@@ -50,3 +50,5 @@ const scrapeFunction = function(req, res) {
   res.send("Scrape Complete");
 
 };
+
+module.exports = scrapeFunction;
