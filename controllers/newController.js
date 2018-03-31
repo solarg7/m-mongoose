@@ -23,6 +23,7 @@ router.get("/", function(req, res) {
   res.send("Hello world holita");
 });
 
+// var titleHandle = require("../models/totalHandl.js");
 
 
 //var scrapeFunction = require("../scripts/scrape.js");
@@ -56,7 +57,7 @@ router.get("/scrape", function(req, res) {
             title: title,
             link: link,
             summary: summary,
-            //storage: true
+            storage: false
           },
           function(err, inserted) {
             if (err) {
@@ -81,9 +82,29 @@ router.get("/scrape", function(req, res) {
 
 
 
+// var titleHandle =[]
+
+// var burger = require("../models/burger.js");
+
+// Create all our routes and set up logic within those routes where required.
+// router.get("/", function(req, res) {
+//   burger.all(function(data) {
+//     var hbsObject = {
+//       burgers: data
+//     };
+//     console.log(hbsObject);
+//     res.render("index", hbsObject);
+//   });
+// });
+
 router.get("/all", function(req, res) {
     // Find all results from the scrapedData collection in the db
     db.Article.find({}, function(error, found) {
+      var hbsObject = {
+        articles: found
+      };
+      res.render("index", hbsObject);
+      
       // Throw any errors to the console
       if (error) {
         console.log(error);
@@ -91,9 +112,10 @@ router.get("/all", function(req, res) {
       // If there are no errors, send the data to the browser as json
       else {
         //res.json(found);
-        res.render("index", found);
+        // res.render("index", found);
       }
     });
+    // console.log("paoloita");
 });
 
 router.post("/api/cats", function(req, res) {

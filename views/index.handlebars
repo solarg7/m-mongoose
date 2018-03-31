@@ -1,41 +1,55 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand"><strong>Point of View</strong></a>
+    </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
+      <form class="navbar-form navbar-left">
+        <button type="button" class="btn btn-default">Home</button>
+      </form>
 
-<h1>Cats!</h1>
+      <form class="navbar-form navbar-left">
+        <button type="button" class="btn btn-default" >Saved Articles</button>
+      </form>
 
-<h2>Cats that are not sleepy!</h2>
+      <form class="navbar-form navbar-left">
+        <button type="button" class="btn btn-default" href:"http://localhost:3000/scrape">Scrape New Articles</button>
+      </form>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<h2>Save a news and put your point of view</h2>
 
 <ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
+  {{#each articles}}
+    {{!-- {{#unless devoured}} --}}
+      <li>
+        {{#unless storages}}
+        {{!-- {{#if storage}} --}}
+            {{title}}
+            <a>Hola</a>
+
+            <button type="button" class="btn btn-default classSave" data-id="{{_id}}" storageStatus="{{storage}}">Save it</button>
+            <button type="button" class="btn btn-default">Delete it</button>
+        {{!-- {{/if}} --}}
+           
+            
+
+        {{/unless}}
+      </li>
+    {{!-- {{/unless}} --}}
   {{/each}}
 </ul>
 
-<h2>Cats that are sleepy!</h2>
-
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Cat</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
-  </div>
-
-  <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-
-  <button type="submit">Add Cat</button>
-</form>
