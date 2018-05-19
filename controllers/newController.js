@@ -72,7 +72,7 @@ router.get("/scrape", function(req, res) {
         limiterCount += 1;
       }
       
-      return ( limiterCount !== 5 );
+      return ( limiterCount !== 7 );
     });
   });
 
@@ -96,6 +96,15 @@ router.get("/scrape", function(req, res) {
 //     res.render("index", hbsObject);
 //   });
 // });
+router.put("/all/:id", function(req, res) {
+  var condition = "id = " + req.params.id;
+
+  console.log("condition", condition);
+  db.Article.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }, { new: true }).then(function(dbArticle) {
+    res.json(dbArticle);
+  });
+  
+});
 
 router.get("/all", function(req, res) {
     // Find all results from the scrapedData collection in the db
@@ -117,7 +126,26 @@ router.get("/all", function(req, res) {
     });
     // console.log("paoloita");
 });
-
+router.get("/savedArticles", function(req, res) {
+  // Find all results from the scrapedData collection in the db
+  db.Article.find({}, function(error, found) {
+    var hbsObject = {
+      articles: found
+    };
+    res.render("index", hbsObject);
+    
+    // Throw any errors to the console
+    if (error) {
+      console.log(error);
+    }
+    // If there are no errors, send the data to the browser as json
+    else {
+      //res.json(found);
+      // res.render("index", found);
+    }
+  });
+  // console.log("paoloita");
+});
 router.post("/api/cats", function(req, res) {
   cat.create([
     "name", "sleepy"
@@ -146,10 +174,10 @@ router.put("/api/cats/:id", function(req, res) {
   });
 });
 
-router.delete("/api/cats/:id", function(req, res) {
+router.delete("/all/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
-  cat.delete(condition, function(result) {
+  db.Article.delete(condition, function(result) {
     if (result.affectedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();

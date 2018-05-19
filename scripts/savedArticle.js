@@ -5,7 +5,6 @@ var scrapeFunction = function(req, res) {
     var $ = cheerio.load(html);
     // For each element with a "title" class
     var limiterCount = 0;
-    var articles = [];
     $("article.story").each(function(i, element) {
       // Save the text and href of each link enclosed in the current element
       var title = $(element).children().children("a").text();
@@ -24,24 +23,31 @@ var scrapeFunction = function(req, res) {
       
       if (title && link && summary) {
         // Insert the data in the scrapedData db
-        var scrapedData = {
+        db.scrapedData.insert({
           title: title,
           link: link,
           summary: summary,
           storage: true
-        };
-
-        articles.push(scrapedData);
+        },
+        function(err, inserted) {
+          if (err) {
+            // Log the error if one is encountered during the query
+            console.log(err);
+          }
+          else {
+            // Otherwise, log the inserted data
+            console.log(inserted);
+          }
+        });
         limiterCount += 1;
       }
       
       return ( limiterCount !== 5 );
     });
-    return articles
   });
 
-  // // Send a "Scrape Complete" message to the browser
-  // res.send("Scrape Complete");
+  // Send a "Scrape Complete" message to the browser
+  res.send("Scrape Complete");
 
 };
 

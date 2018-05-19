@@ -1,18 +1,21 @@
 $(".classSave").on("click", function(event) {
+  console.log("paolita");
   var id = $(this).data("data-id");
-  var state = true;
+  var storage = true;
+
+   console.log(id + "storgae status= " + storage);
 
   var newState = {
-    storage: state
+    storage: storage
   };
 
   // Send the PUT request.
-  $.ajax("/api/burgers/" + id, {
+  $.ajax("/all/" + id, {
     type: "PUT",
-    data: newDevourState
+    data: newState
   }).then(
     function() {
-      console.log("changed devour to", newDevour);
+      console.log("changed devour to", newState);
       // Reload the page to get the updated list
       location.reload();
     }

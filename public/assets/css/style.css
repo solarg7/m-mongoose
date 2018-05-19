@@ -6,6 +6,7 @@ li {
 
 .label {
   font-weight: bold;
+  color: orange;
 }
 
 .create-update-form {
@@ -16,4 +17,8 @@ li {
 
 .form-group {
   margin-bottom: 5px;
+}
+
+body{
+  background-color: mediumvioletred;
 }
