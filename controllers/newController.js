@@ -150,6 +150,9 @@ router.put("/:id", function(req, res) {
 
 });
 
+
+
+
 router.delete("/:id", function(req, res) {
   console.log("Hola loco");
   db.Article.remove(
@@ -173,6 +176,30 @@ router.delete("/:id", function(req, res) {
 );
 
 });
+
+router.get("/saved", function(req, res) {
+  // Find all results from the scrapedData collection in the db
+  db.Article.find({storage: true}, function(error, found) {
+    var hbsObject = {
+      articles: found
+    };
+    res.render("storaged", hbsObject);
+    
+    // Throw any errors to the console
+    if (error) {
+      console.log(error);
+    }
+    // If there are no errors, send the data to the browser as json
+    else {
+      //res.json(found);
+      // res.render("index", found);
+    }
+  });
+  // console.log("paoloita");
+});
+
+
+
 router.post("/api/cats", function(req, res) {
   cat.create([
     "name", "sleepy"
