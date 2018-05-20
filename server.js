@@ -43,9 +43,9 @@ var routes = require("./controllers/newController.js");
 
 app.use(routes);
 
-var scrapes = require("./scripts/scrape.js");
+// var scrapes = require("./scripts/scrape.js");
 
-app.use(scrapes);
+// app.use(scrapes);
 
 
 // Set Handlebars.

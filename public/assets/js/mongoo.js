@@ -1,18 +1,26 @@
 $(".classSave").on("click", function(event) {
-  var id = $(this).data("data-id");
+  console.log("hola Paolita" );
+  
+  var id = $(this).data("id");
+  // var storage = $(this).data("storagestatus");
   var state = true;
-
+  console.log("queee"+ $(this).data("id"));
+  console.log("hola Paolita" + id + "mas =" + state);
   var newState = {
     storage: state
   };
 
+  console.log(
+    newState);
+
   // Send the PUT request.
-  $.ajax("/api/burgers/" + id, {
+  $.ajax("/"+ id, {
+
     type: "PUT",
-    data: newDevourState
+    data: newState
   }).then(
     function() {
-      console.log("changed devour to", newDevour);
+      console.log("changed devour to");
       // Reload the page to get the updated list
       location.reload();
     }

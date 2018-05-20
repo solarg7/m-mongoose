@@ -99,7 +99,7 @@ router.get("/scrape", function(req, res) {
 
 router.get("/all", function(req, res) {
     // Find all results from the scrapedData collection in the db
-    db.Article.find({}, function(error, found) {
+    db.Article.find({storage: false}, function(error, found) {
       var hbsObject = {
         articles: found
       };
@@ -117,7 +117,62 @@ router.get("/all", function(req, res) {
     });
     // console.log("paoloita");
 });
+router.put("/:id", function(req, res) {
+  var condition = "_id: ObjectId('" + req.params.id +"'";
+  console.log("Hola loco");
+  console.log("condition", condition);
+  var storage = "storage = " + req.params.storage;
+  console.log("linea125", storage);
 
+  db.Article.update(
+    {
+      _id: req.params.id
+    }, 
+    {
+    $set: {storage: true}
+    
+    },
+    function(error, storage) {
+      // Log any errors from mongojs
+      if (error) {
+        console.log(error);
+        res.send(error);
+      }
+      else {
+        // Otherwise, send the mongojs response to the browser
+        // This will fire off the success function of the ajax request
+        console.log(storage);
+        res.send(storage);
+      }
+    }
+
+);
+
+});
+
+router.delete("/:id", function(req, res) {
+  console.log("Hola loco");
+  db.Article.remove(
+    {
+      _id: req.params.id
+    }, 
+    function(error, removed) {
+      // Log any errors from mongojs
+      if (error) {
+        console.log(error);
+        res.send(error);
+      }
+      else {
+        // Otherwise, send the mongojs response to the browser
+        // This will fire off the success function of the ajax request
+        console.log(removed);
+        // res.send(storage);
+      }
+    }
+
+);
+
+});
 router.post("/api/cats", function(req, res) {
   cat.create([
     "name", "sleepy"
@@ -145,6 +200,8 @@ router.put("/api/cats/:id", function(req, res) {
     }
   });
 });
+
+
 
 router.delete("/api/cats/:id", function(req, res) {
   var condition = "id = " + req.params.id;
