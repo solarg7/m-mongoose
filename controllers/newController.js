@@ -68,16 +68,17 @@ router.get("/scrape", function(req, res) {
               // Otherwise, log the inserted data
               console.log(inserted);
             }
-        });
-        limiterCount += 1;
+          });
+          limiterCount += 1;
       }
       
       return ( limiterCount !== 5 );
     });
+    
   });
 
   // Send a "Scrape Complete" message to the browser
-  res.send("Scrape Complete");
+  res.send(true);
 });
 
 
@@ -169,7 +170,7 @@ router.delete("/:id", function(req, res) {
         // Otherwise, send the mongojs response to the browser
         // This will fire off the success function of the ajax request
         console.log(removed);
-        // res.send(storage);
+        res.send(removed);
       }
     }
 

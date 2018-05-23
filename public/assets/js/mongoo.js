@@ -27,6 +27,57 @@ $(".classSave").on("click", function(event) {
   );
 });
 
+$(".classDelete").on("click", function(event) {
+  console.log("hola Paolita delete" );
+  
+  var id = $(this).data("id");
+
+
+  // Send the PUT request.
+  $.ajax("/"+ id, {
+    type: "DELETE",
+  }).then(
+    function() {
+      console.log("changed devour to");
+      // Reload the page to get the updated list
+      location.reload();
+    }
+  );
+});
+
+
+$("#scrapeButton").on("click", function(event) {
+  console.log("hola Paolita scrape" );
+  // Send the PUT request.
+  $.ajax("/scrape", {
+    type: "GET",
+  }).then(
+    function() {
+      console.log("changed devour to");
+      // Reload the page to get the updated list
+      alert("Scrape done!");
+      location.reload();
+    }
+  );
+});
+// $("#scrape").on("click", function(event) {
+//   console.log("hola Paolita" );
+//   var newState = {
+//     storage: state
+//   };
+
+//   $.ajax("/scrape", {
+
+//     type: "PUT",
+//     data: newState
+//   }).then(
+//     function() {
+//       console.log("changed devour to");
+//       // Reload the page to get the updated list
+//       location.reload();
+//     }
+//   );
+// });
 
 $(document).on("click", "#savenote", function() {
   // Grab the id associated with the article from the submit button

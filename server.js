@@ -6,7 +6,7 @@ var logger = require("morgan");
 
 var mongoose = require("mongoose");
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/homework14", function (err){
+mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/homework14", function (err){
     if (err) throw err;
     console.log("Successfully connected");
 });
