@@ -4,9 +4,7 @@
   "description": "mongodb / mongoose home work code bootcamp",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-prebuild": "cd client && yarn install",
-    "heroku-postbuild": "node scripts/build.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
