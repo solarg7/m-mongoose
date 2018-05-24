@@ -6,10 +6,12 @@ var logger = require("morgan");
 
 var mongoose = require("mongoose");
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/homework14", function (err){
-    if (err) throw err;
-    console.log("Successfully connected");
-});
+// mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/homework14", function (err){
+//     if (err) throw err;
+//     console.log("Successfully connected");
+// });
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/homework14");
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
