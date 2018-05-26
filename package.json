@@ -1,15 +1,12 @@
 {
-  "name": "m-mongoose",
+  "name": "mongoose-solarg7",
   "version": "1.0.0",
   "description": "mongodb / mongoose home work code bootcamp",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/solarg7/m-mongoose.git"
-  },
+  "repository": "git+https://github.com/solarg7/m-mongoose.git",
   "author": "solarg7",
   "license": "ISC",
   "bugs": {
