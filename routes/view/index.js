@@ -12,7 +12,7 @@ var router = express.Router();
 //     res.send("Hello world holita");
 // });
 
-router.get("/", function(req, res) {
+router.get("/all", function(req, res) {
     res.render("index");
 });
 
