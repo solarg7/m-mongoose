@@ -11,7 +11,15 @@ var mongoose = require("mongoose");
 //     console.log("Successfully connected");
 // });
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/homework14");
+var databaseUri = "mongodb://localhost/homework14";
+
+if (process.env.MONGODB_URI){
+  mongoose.connect(process.env.MONGODB_URI);
+} else{
+  mongoose.connect(pdatabaseUri);
+}
+
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/homework14");
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
@@ -22,7 +30,7 @@ var cheerio = require("cheerio");
 // Require all models
 //var db = require("./models");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
