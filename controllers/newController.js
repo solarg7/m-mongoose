@@ -20,8 +20,10 @@ var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-  res.send("Hello world holita");
+  res.send("<a href="+"/all"+" >Click Here to Start</a>");
 });
+
+
 
 // var titleHandle = require("../models/totalHandl.js");
 
