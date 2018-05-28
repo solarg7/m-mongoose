@@ -16,7 +16,7 @@ var databaseUri = "mongodb://localhost/homework14";
 if (process.env.MONGODB_URI){
   mongoose.connect(process.env.MONGODB_URI);
 } else{
-  mongoose.connect(pdatabaseUri);
+  mongoose.connect(databaseUri);
 }
 
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/homework14");

@@ -47,6 +47,7 @@ $(".classDelete").on("click", function(event) {
 
 
 $("#scrapeButton").on("click", function(event) {
+  event.preventDefault();
   console.log("hola Paolita scrape" );
   // Send the PUT request.
   $.ajax("/scrape", {
@@ -55,8 +56,17 @@ $("#scrapeButton").on("click", function(event) {
     function() {
       console.log("changed devour to");
       // Reload the page to get the updated list
-      alert("Scrape done!");
-      location.reload();
+      bootbox.alert({
+      
+      size: "small",
+      title: "Your Title",
+      message: "Your message here…", 
+      callback: function(){ location.reload() }
+      })
+
+
+
+      // location.reload();
     }
   );
 });
