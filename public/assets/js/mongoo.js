@@ -122,24 +122,7 @@ $(".classNote").on("click", function(event) {
   // );
 });
 
-// $("#scrape").on("click", function(event) {
-//   console.log("hola Paolita" );
-//   var newState = {
-//     storage: state
-//   };
 
-//   $.ajax("/scrape", {
-
-//     type: "PUT",
-//     data: newState
-//   }).then(
-//     function() {
-//       console.log("changed devour to");
-//       // Reload the page to get the updated list
-//       location.reload();
-//     }
-//   );
-// });
 
 $(document).on("click", "#savenote", function() {
   // Grab the id associated with the article from the submit button
@@ -168,93 +151,3 @@ $(document).on("click", "#savenote", function() {
   $("#titleinput").val("");
   $("#bodyinput").val("");
 });
-
-
-
-
-// // Make sure we wait to attach our handlers until the DOM is fully loaded.
-// $(function() {
-
-    // $(".classSave").on("click", function(event) {
-    //   var id = $(this).data("id");
-    //   var newDevour = $(this).data("newdevour");
-
-    //   var newDevourState = {
-    //     devoured: newDevour
-    //   };
-
-    //   // Send the PUT request.
-    //   $.ajax("/api/burgers/" + id, {
-    //     type: "PUT",
-    //     data: newDevourState
-    //   }).then(
-    //     function() {
-    //       console.log("changed devour to", newDevour);
-    //       // Reload the page to get the updated list
-    //       location.reload();
-    //     }
-    //   );
-    // });
-
-
-
-
-//     $(".change-sleep").on("click", function(event) {
-//       var id = $(this).data("id");
-//       var newSleep = $(this).data("newsleep");
-  
-//       var newSleepState = {
-//         sleepy: newSleep
-//       };
-  
-//       // Send the PUT request.
-//       $.ajax("/api/cats/" + id, {
-//         type: "PUT",
-//         data: newSleepState
-//       }).then(
-//         function() {
-//           console.log("changed sleep to", newSleep);
-//           // Reload the page to get the updated list
-//           location.reload();
-//         }
-//       );
-//     });
-  
-//     $(".create-form").on("submit", function(event) {
-//       // Make sure to preventDefault on a submit event.
-//       event.preventDefault();
-  
-//       var newCat = {
-//         name: $("#ca").val().trim(),
-//         sleepy: $("[name=sleepy]:checked").val().trim()
-//       };
-  
-//       // Send the POST request.
-//       $.ajax("/api/cats", {
-//         type: "POST",
-//         data: newCat
-//       }).then(
-//         function() {
-//           console.log("created new cat");
-//           // Reload the page to get the updated list
-//           location.reload();
-//         }
-//       );
-//     });
-  
-//     $(".delete-cat").on("click", function(event) {
-//       var id = $(this).data("id");
-  
-//       // Send the DELETE request.
-//       $.ajax("/api/cats/" + id, {
-//         type: "DELETE",
-//       }).then(
-//         function() {
-//           console.log("deleted cat", id);
-//           // Reload the page to get the updated list
-//           location.reload();
-//         }
-//       );
-//     });
-//   });
-  

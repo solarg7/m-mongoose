@@ -5,11 +5,7 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 
 var mongoose = require("mongoose");
-// Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/homework14", function (err){
-//     if (err) throw err;
-//     console.log("Successfully connected");
-// });
+
 
 var databaseUri = "mongodb://localhost/homework14";
 
@@ -45,18 +41,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 
-// app.get("/", function(req, res) {
-//     res.send("Hello world");
-// });
 
-// Import routes and give the server access to them.
 var routes = require("./controllers/newController.js");
 
 app.use(routes);
 
-// var scrapes = require("./scripts/scrape.js");
 
-// app.use(scrapes);
 
 
 // Set Handlebars.
