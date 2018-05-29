@@ -85,7 +85,7 @@ $(".classNote").on("click", function(event) {
       bootbox.prompt({
       
       // size: "small",
-      title: "Put a Note for this Article!",
+      title: "Write a Note for this Article!",
       message: "Articles Scraped from NYT",
       inputType: 'textarea',
       // buttons: {
