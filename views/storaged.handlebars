@@ -22,9 +22,9 @@
         <button type="button" class="btn btn-default" ><a href="/saved">Saved Articles</a></button>
       </form>
 
-      <form class="navbar-form navbar-left">
+      {{!-- <form class="navbar-form navbar-left">
         <button type="button" class="btn btn-default"><a href="/scrape">Scrape New Articles</a></button>
-      </form>
+      </form> --}}
       
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -41,7 +41,7 @@
             {{title}}
             <a>Hola</a>
 
-            <button type="button" class="btn btn-default classSave" data-id="{{_id}}" storageStatus="{{storage}}">Note</button>
+            <button type="button" class="btn btn-default classNote" data-id="{{_id}}" storageStatus="{{storage}}">Note</button>
             <button type="button" data-id="{{_id}}" class="btn btn-default classDelete">Delete it</button>
         {{!-- {{/if}} --}}
            
